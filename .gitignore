@@ -1,0 +1,23 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node.js
+node_modules/
+.next/
+out/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# System
+.DS_Store
+
+# Local data
+data/
+
+.vscode/

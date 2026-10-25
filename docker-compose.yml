@@ -1,0 +1,20 @@
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg17-trixie
+    container_name: runeterra-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: runeterra
+      POSTGRES_PASSWORD: runeterra_dev
+      POSTGRES_DB: runeterra
+
+    ports:
+      - "127.0.0.1:5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
