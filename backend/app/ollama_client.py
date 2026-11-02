@@ -1,10 +1,14 @@
 
 from ollama import Client
+from dotenv import load_dotenv
+import os
 
 client = Client(host="http://localhost:11434")
 
-CHAT_MODEL = "qwen3:4b"
-EMBEDDING_MODEL = "embeddinggemma"
+load_dotenv()
+
+CHAT_MODEL = os.environ["CHAT_MODEL"]
+EMBEDDING_MODEL = os.environ["EMBEDDING_MODEL"]
 
 
 def generate_answer(question: str) -> str:

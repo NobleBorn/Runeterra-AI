@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #091522;
+  color: #f0e6d2;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: #c8aa6e;
+  color: #091522;
+}
