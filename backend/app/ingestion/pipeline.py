@@ -1,7 +1,8 @@
 
 import json
-
 import numpy as np
+import os
+from dotenv import load_dotenv 
 
 from app.db import get_connection
 from app.ollama_client import generate_embedding
@@ -10,8 +11,9 @@ from app.ingestion.text_processing import (
     content_hash,
 )
 
+load_dotenv()
 
-EMBEDDING_MODEL = "embeddinggemma"
+EMBEDDING_MODEL = os.environ["EMBEDDING_MODEL"]
 VECTOR_DIMENSIONS = 768
 
 

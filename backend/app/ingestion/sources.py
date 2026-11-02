@@ -1,11 +1,14 @@
 
 import html
 import re
-
 import httpx
+import os
 
+from dotenv import load_dotenv
 
-BASE_URL = "https://ddragon.leagueoflegends.com"
+load_dotenv()
+
+BASE_URL = os.environ["DDRAGON_URL"]
 
 
 def clean_text(text: str) -> str:
