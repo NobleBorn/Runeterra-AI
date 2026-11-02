@@ -10,6 +10,9 @@ from app.rag.service import RAGService
 from fastapi.responses import StreamingResponse
 from app.rag.streaming import stream_rag_answer
 
+from fastapi import HTTPException
+from app.db import get_connection
+
 app = FastAPI(
     title="Runeterra AI API",
     version="0.1.0"
@@ -30,6 +33,20 @@ def health():
         "message": "Runeterra AI backend is running"
     }
 
+
+@app.get("/health/db")
+def database_health():
+    try:
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT 1")
+                cur.fetchone()
+        return {"database": "connected"}
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Database unavailable"
+        )
 
 
 rag_service = RAGService()
